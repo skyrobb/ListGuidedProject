@@ -45,7 +45,7 @@
         <!--New ToDo-->
         <scene sceneID="cL8-mv-1UJ">
             <objects>
-                <tableViewController id="s42-rH-7yE" sceneMemberID="viewController">
+                <tableViewController id="s42-rH-7yE" customClass="ToDoDetailTableViewController" customModule="ListGuidedProject" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="fzx-dg-8dC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -72,11 +72,18 @@
                                                             <state key="selected" image="checkmark.circle.fill" catalog="system">
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="24"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="isCompleteButtonTapped:" destination="s42-rH-7yE" eventType="touchUpInside" id="hJX-9Q-Ean"/>
+                                                            </connections>
                                                         </button>
                                                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Remind me to..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XxM-jl-y6A">
                                                             <rect key="frame" x="28" y="0.0" width="325" height="34.333333333333336"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits"/>
+                                                            <connections>
+                                                                <action selector="returnPressed:" destination="s42-rH-7yE" eventType="primaryActionTriggered" id="H8u-NU-ecC"/>
+                                                                <action selector="textEditingChanged:" destination="s42-rH-7yE" eventType="editingChanged" id="F1j-Tm-t1a"/>
+                                                            </connections>
                                                         </textField>
                                                     </subviews>
                                                 </stackView>
@@ -125,7 +132,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="POc-hd-3U1">
-                                                    <rect key="frame" x="0.0" y="0.0" width="393" height="216.33333333333334"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="393" height="217"/>
+                                                    <connections>
+                                                        <action selector="datePickerChanged:" destination="s42-rH-7yE" eventType="valueChanged" id="Or0-X2-y55"/>
+                                                    </connections>
                                                 </datePicker>
                                             </subviews>
                                             <constraints>
@@ -183,6 +193,14 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="dueDateDatePicker" destination="POc-hd-3U1" id="NcI-Lw-Q29"/>
+                        <outlet property="dueDateLabel" destination="Hhc-JI-IQV" id="D5v-Aw-htj"/>
+                        <outlet property="isCompleteButton" destination="4PP-uH-0Xs" id="pck-LY-onN"/>
+                        <outlet property="notesTextView" destination="TL5-kH-tLh" id="bfL-tg-6F1"/>
+                        <outlet property="saveButton" destination="sTP-Tf-Gpx" id="MoW-Ub-1br"/>
+                        <outlet property="titleTextField" destination="XxM-jl-y6A" id="90f-E4-EQ4"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a8t-HA-c9B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="AXu-ba-y30" userLabel="Exit" sceneMemberID="exit"/>
