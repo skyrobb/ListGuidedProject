@@ -15,6 +15,7 @@ class ToDoTableViewController: UITableViewController, ToDoCellDelegate {
             toDo.isComplete.toggle()
             toDos[indexPath.row] = toDo
             tableView.reloadRows(at: [indexPath], with: .automatic)
+            ToDo.saveToDos(toDos)
         }
     }
     
@@ -66,6 +67,7 @@ class ToDoTableViewController: UITableViewController, ToDoCellDelegate {
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
             }
         }
+        ToDo.saveToDos(toDos)
     }
 
     // MARK: - Table view data source
@@ -96,6 +98,7 @@ class ToDoTableViewController: UITableViewController, ToDoCellDelegate {
         if editingStyle == .delete {
             toDos.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
+            ToDo.saveToDos(toDos)
         }
     }
     
